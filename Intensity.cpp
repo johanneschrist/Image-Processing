@@ -121,6 +121,52 @@ Intensity::changeInt(int thr)
 }
 
 
+//void histeq(ImagePtr I1, ImagePtr I2)
+//{
+//	int i, R;
+//	int left[MXGRAY], width[MXGRAY];
+//	uchar *in, *out;
+//	long total, Hsum, Havg, histo[MXGRAY];
+//	/* total number of pixels in image */
+//	total = (long)I1->width * I1->height;
+//	/* init I2 dimensions and buffer */
+//	I2->width = I1->width;
+//	I2->height = I1->height;
+//	I2->image = (uchar *)malloc(total);
+//	/* init input and output pointers */
+//	in = I1->image;/* input image buffer */
+//	out = I2->image;/* output image buffer */
+//	/* compute histogram */
+//	for (i = 0; i<MXGRAY; i++) histo[i] = 0; /* clear histogram */
+//	for (i = 0; i<total; i++) histo[in[i]]++;/* eval histogram */
+//	R = 0;/* right end of interval*/
+//	Hsum = 0;/* cumulative value for interval*/
+//	Havg = total / MXGRAY; /* interval value for uniform histogram */
+//	/* evaluate remapping of all input gray levels;
+//	* Each input gray value maps to an interval of valid output values.
+//	* The endpoints of the intervals are left[] and left[]+width[].
+//	*/
+//	for (i = 0; i<MXGRAY; i++) {
+//		left[i] = R;/* left end of interval*/
+//		Hsum += histo[i];/* cum. interval value*/
+//		while (Hsum>Havg && R<MXGRAY - 1) { /* make interval wider*/
+//			Hsum -= Havg;/* adjust Hsum*/
+//			R++;/* update right end*/
+//		}
+//		width[i] = R - left[i] + 1;/* width of interval */
+//	}
+//	/* visit all input pixels and remap intensities */
+//	for (i = 0; i<total; i++) {
+//		if (width[in[i]] == 1) out[i] = left[in[i]];
+//		else {/* in[i] spills over into width[] possible values */
+//			/* randomly pick from 0 to width[i] */
+//			R = ((rand() & 0x7fff)*width[in[i]]) >> 15;/* 0 <= R < width */
+//			out[i] = left[in[i]] + R;
+//		}
+//	}
+//}
+
+
 
 
 void

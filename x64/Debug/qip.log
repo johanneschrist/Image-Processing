@@ -1,5 +1,5 @@
-﻿Build started 3/3/2016 8:35:21 PM.
-     1>Project "C:\Users\johan\Documents\A Spring 2016\CS470 - Image Processing\HWs\qip.vcxproj" on node 2 (Build target(s)).
+﻿Build started 3/4/2016 12:46:49 AM.
+     1>Project "C:\Users\johan\Documents\A Spring 2016\CS470 - Image Processing\Image-Processing\qip.vcxproj" on node 2 (Build target(s)).
      1>CustomBuild:
          Moc'ing Contrast.h...
          Moc'ing Dummy.h...
@@ -20,7 +20,7 @@
          moc_Quantization.cpp
          moc_Threshold.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"debug\\qip.exe" /NOLOGO /LIBPATH:C:\qt\qt5.5.0\5.5\msvc2013_64\lib /LIBPATH:C:/qt/qt5.5.0/5.5/msvc2013_64/lib /LIBPATH:C:\Qt\Qt5.5.0\5.5\msvc2013_64\lib /LIBPATH:.\IP\win\lib C:\qt\qt5.5.0\5.5\msvc2013_64\lib\qtmaind.lib shell32.lib C:/qt/qt5.5.0/5.5/msvc2013_64/lib\Qt5Cored.lib .\IP\win\lib\IP_d.lib C:\qt\qt5.5.0\5.5\msvc2013_64\lib\Qt5Widgetsd.lib C:\qt\qt5.5.0\5.5\msvc2013_64\lib\Qt5Guid.lib C:\qt\qt5.5.0\5.5\msvc2013_64\lib\Qt5Cored.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"debug\qip.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /MACHINE:X64 "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" x64\Debug\Contrast.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"debug\\qip.exe" /NOLOGO /LIBPATH:C:\qt\qt5.5.0\5.5\msvc2013_64\lib /LIBPATH:C:/qt/qt5.5.0/5.5/msvc2013_64/lib /LIBPATH:C:\Qt\Qt5.5.0\5.5\msvc2013_64\lib /LIBPATH:.\IP\win\lib C:\qt\qt5.5.0\5.5\msvc2013_64\lib\qtmaind.lib shell32.lib C:/qt/qt5.5.0/5.5/msvc2013_64/lib\Qt5Cored.lib .\IP\win\lib\IP_d.lib C:\qt\qt5.5.0\5.5\msvc2013_64\lib\Qt5Widgetsd.lib C:\qt\qt5.5.0\5.5\msvc2013_64\lib\Qt5Guid.lib C:\qt\qt5.5.0\5.5\msvc2013_64\lib\Qt5Cored.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"debug\qip.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /MACHINE:X64 "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" x64\Debug\Contrast.obj
          x64\Debug\Dummy.obj
          x64\Debug\Gamma.obj
          x64\Debug\ImageFilter.obj
@@ -36,9 +36,9 @@
          x64\Debug\Quantization.obj
          x64\Debug\Threshold.obj
          x64\Debug\main.obj
-         qip.vcxproj -> C:\Users\johan\Documents\A Spring 2016\CS470 - Image Processing\HWs\debug\qip.exe
-     1>Done Building Project "C:\Users\johan\Documents\A Spring 2016\CS470 - Image Processing\HWs\qip.vcxproj" (Build target(s)).
+         qip.vcxproj -> C:\Users\johan\Documents\A Spring 2016\CS470 - Image Processing\Image-Processing\debug\qip.exe
+     1>Done Building Project "C:\Users\johan\Documents\A Spring 2016\CS470 - Image Processing\Image-Processing\qip.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:12.81
+Time Elapsed 00:00:11.25

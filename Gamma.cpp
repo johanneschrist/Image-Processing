@@ -11,6 +11,8 @@
 
 #include "MainWindow.h"
 #include "Gamma.h"
+#include <iostream>
+#include <math.h>
 
 extern MainWindow *g_mainWindowP;
 
@@ -36,10 +38,10 @@ Gamma::applyFilter(ImagePtr I1, ImagePtr I2)
 	if (I1.isNull()) return 0;
 
 	// get threshold value
-	int thr = m_slider->value();
+	double thr = m_slider->value();
 
 	// error checking
-	if (thr < 0 || thr > MXGRAY) return 0;
+	//if (thr < 0 || thr > MXGRAY) return 0;
 
 	// apply filter
 	gamma(I1, thr, I2);
@@ -67,16 +69,16 @@ Gamma::controlPanel()
 	// create slider
 	m_slider = new QSlider(Qt::Horizontal, m_ctrlGrp);
 	m_slider->setTickPosition(QSlider::TicksBelow);
-	m_slider->setTickInterval(25);
-	m_slider->setMinimum(1);
-	m_slider->setMaximum(MXGRAY);
-	m_slider->setValue(MXGRAY >> 1);
+	m_slider->setTickInterval(50);
+	m_slider->setMinimum(0.01);
+	m_slider->setMaximum(7.99);
+	m_slider->setValue(4);
 
 	// create spinbox
 	m_spinBox = new QSpinBox(m_ctrlGrp);
-	m_spinBox->setMinimum(1);
-	m_spinBox->setMaximum(MXGRAY);
-	m_spinBox->setValue(MXGRAY >> 1);
+	m_spinBox->setMinimum(0.01);
+	m_spinBox->setMaximum(7.99);
+	m_spinBox->setValue(4);
 
 	// init signal/slot connections for Threshold
 	connect(m_slider, SIGNAL(valueChanged(int)), this, SLOT(changeGamma(int)));
@@ -120,25 +122,50 @@ Gamma::changeGamma(int thr)
 
 
 
-
 void
-Gamma::gamma(ImagePtr I1, int thr, ImagePtr I2) {
+Gamma::gamma(ImagePtr I1, double thr, ImagePtr I2) {
 	IP_copyImageHeader(I1, I2);
 	int w = I1->width();
 	int h = I1->height();
 	int total = w * h;
 
-	// compute lut[]
-	int i, lut[MXGRAY];
-	for (i = 0; i<thr && i<MXGRAY; ++i) lut[i] = 0;
-	for (; i <= MaxGray; ++i) lut[i] = MaxGray;
+	//double factor = (259 * (thr + 255)) / (255 * (259 - contrast));
 
 	int type;
 	ChannelPtr<uchar> p1, p2, endd;
-	for (int ch = 0; IP_getChannel(I1, ch, p1, type); ch++) {
+	for (int ch = 0; IP_getChannel(I1, ch, p1, type); ch++) {		
+
+		double gammaCorrection = 1.0 / thr;
+		std::cout << "\nGamma correction is: " << gammaCorrection;
+		//newRed = 255 * (Red(colour) / 255) ^ gammaCorrection
+		//	pow(7.0, 3.0)
+
 		IP_getChannel(I2, ch, p2, type);
-		for (endd = p1 + total; p1<endd;) *p2++ = lut[*p1++];
+		for (endd = p1 + total; p1 < endd;) {
+
+			if (  ( int( 255 * pow((*p1 / 255.0), (gammaCorrection)))) > 255  ){
+				//std::cout << "\nColor is: " << (int(255 * pow((*p1 / 255), (gammaCorrection))));
+				*p2++ = 255;
+				*p1++;
+			}
+
+			else if ((int(255 * pow((*p1 / 255.0), (gammaCorrection)))) < 0){
+				//std::cout << "\nColor is: " << (int(255 * pow((*p1 / 255), (gammaCorrection))));
+				*p2++ = 0;
+				*p1++;
+			}
+
+			else{
+				//std::cout << "\nColor is: " << (int(255 * pow((*p1 / 255), (gammaCorrection))));
+				*p2++ = (int(255 * pow((*p1++ / 255.0), (gammaCorrection))));
+			}
+			
+		}
+
 	}
+
+
+
 }
 
 

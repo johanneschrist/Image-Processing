@@ -25,7 +25,7 @@ public:
 	void		reset();		// reset parameters
 
 protected:
-	void gamma(ImagePtr I1, int thr, ImagePtr I2);
+	void gamma(ImagePtr I1, double thr, ImagePtr I2);
 
 	protected slots:
 	void changeGamma(int);
